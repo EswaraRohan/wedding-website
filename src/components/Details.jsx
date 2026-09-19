@@ -2,11 +2,11 @@ import { Calendar, Clock, MapPin, Shirt } from 'lucide-react'
 
 const events = [
   {
-    eventId: 'pellikooturu', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f338/72.png', name: 'Pellikuthuru  & Haldi', nameSub: 'Pre-Wedding Ceremony',
+    eventId: 'Pellikuthuru', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f338/72.png', name: 'Pellikuthuru  & Haldi', nameSub: 'Pre-Wedding Ceremony',
     date: 'Monday, November 23, 2026', time: '8:00 AM onwards', venue: 'Eswara Nilayam',
     address: 'Eswara Nilayam, Kurnool', mapsUrl: 'https://maps.app.goo.gl/Dx9JMDEY6mELfkew8',
     dresscode: 'Yellow / Ethnic Wear', badge: 'Festive Attire', highlight: false, accent: '#8a9e8a',
-    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Pelli+Kooturu&dates=20261123T000000Z/20261123T120000Z&location=Eswara+Nilayam+Kurnool',
+    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Pellikuthuru+Event&dates=20261123T000000Z/20261123T120000Z&location=Eswara+Nilayam+Kurnool',
   },
   {
     eventId: 'sangeeth', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f3b6/72.png', name: 'Edurukolu & Sangeet', nameSub: "Groom's Welcome & Sangeet Night",
