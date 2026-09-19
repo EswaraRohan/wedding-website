@@ -1,6 +1,8 @@
+import bridePhoto from '../assets/bride.jpg'
+
 const couple = [
   {
-    role: 'Bride', name: 'Katyayani', photo: 'https://picsum.photos/seed/brideKY2/500/600',
+    role: 'Bride', name: 'Katyayani', photo: bridePhoto,
     bio: 'Katyayani radiates grace and warmth in everything she does. Her laughter lights up every room and her kindness touches every heart.',
     city: 'Hyderabad, Telangana', side: 'left',
   },

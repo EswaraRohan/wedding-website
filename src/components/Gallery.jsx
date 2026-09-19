@@ -1,8 +1,17 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
+import engagementOne from '../assets/013A6718 (1).jpg'
+import engagementTwo from '../assets/013A6931.jpg'
+import engagementThree from '../assets/A_R69262.jpg'
+import engagementFour from '../assets/A_R69431.jpg'
+import engagementFive from '../assets/IMG_4983.jpeg'
 
 const photos = [
-  { src: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1200&auto=format&fit=crop', caption: 'The Sacred Union', symbol: '🌹' },
+  { src: engagementOne, caption: 'A Little Engagement Magic', symbol: '✨' },
+  { src: engagementTwo, caption: 'The Celebration Begins', symbol: '🌸' },
+  { src: engagementThree, caption: 'Moments Worth Keeping', symbol: '💍' },
+  { src: engagementFour, caption: 'Love, Laughter & Forever', symbol: '💛' },
+  { src: engagementFive, caption: 'A Sneak Peek of Forever', symbol: '🌿' },
 ]
 
 export default function Gallery() {
@@ -10,7 +19,7 @@ export default function Gallery() {
   return <section id="gallery" className="gallery-section">
     <div className="section-inner">
       <div data-animate className="section-heading">
-        <p className="section-kicker">Captured Memories</p><h2>Our Gallery</h2><div className="heading-rule" />
+        <p className="section-kicker">Engagement Sneak Peeks</p><h2>Our Gallery</h2><div className="heading-rule" />
       </div>
       <div data-animate className="gallery-grid">
         {photos.map((photo, i) => <div key={i} onClick={() => setSelected(photo)} className="gallery-item">

@@ -11,6 +11,7 @@ import VenueMap from './components/VenueMap'
 
 export default function App() {
   const [opened, setOpened] = useState(false)
+  const [scratched, setScratched] = useState(false)
 
   // Lock body scroll while welcome screen is showing; scroll to top when dismissed
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function App() {
 
   // Set up IntersectionObserver for scroll-reveal after welcome dismissed
   useEffect(() => {
-    if (!opened) return
+    if (!opened || !scratched) return
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -49,7 +50,7 @@ export default function App() {
       clearTimeout(timer)
       observer.disconnect()
     }
-  }, [opened])
+  }, [opened, scratched])
 
   return (
     <div style={{ width: '100%' }}>
@@ -57,13 +58,17 @@ export default function App() {
       {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
-      <Navbar />
-      <Hero />
-      <Details />
-      <MeetCouple />
-      <Gallery />
-      <Family />
-      <VenueMap />
+      {scratched && <Navbar />}
+      <Hero onReveal={() => setScratched(true)} />
+      {scratched && (
+        <>
+          <Details />
+          <MeetCouple />
+          <Gallery />
+          <Family />
+          <VenueMap />
+        </>
+      )}
     </div>
   )
 }
