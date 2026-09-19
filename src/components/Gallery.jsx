@@ -3,14 +3,12 @@ import { X } from 'lucide-react'
 import engagementOne from '../assets/013A6718 (1).jpg'
 import engagementTwo from '../assets/013A6931.jpg'
 import engagementThree from '../assets/A_R69262.jpg'
-import engagementFour from '../assets/A_R69431.jpg'
 import engagementFive from '../assets/IMG_4983.jpeg'
 
 const photos = [
   { src: engagementOne, caption: 'A Little Engagement Magic', symbol: '✨' },
   { src: engagementTwo, caption: 'The Celebration Begins', symbol: '🌸' },
   { src: engagementThree, caption: 'Moments Worth Keeping', symbol: '💍' },
-  { src: engagementFour, caption: 'Love, Laughter & Forever', symbol: '💛' },
   { src: engagementFive, caption: 'A Sneak Peek of Forever', symbol: '🌿' },
 ]
 
