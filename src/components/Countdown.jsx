@@ -18,11 +18,19 @@ export default function Countdown({ targetDate }) {
     return () => clearInterval(id)
   }, [targetDate])
 
-  return (
-    <div className="simple-countdown">
-      {Object.entries(time).map(([label, value]) => (
-        <div key={label}><strong>{String(value).padStart(2, '0')}</strong><span>{label}</span></div>
-      ))}
-    </div>
-  )
+  const units = [
+    { label: 'Days', value: time.days },
+    { label: 'Hrs', value: time.hours },
+    { label: 'Min', value: time.minutes },
+    { label: 'Sec', value: time.seconds },
+  ]
+
+  return <div className="countdown-boxes">
+    {units.map(({ label, value }) => (
+      <div className="count-box" key={label}>
+        <div className="count-value">{label === 'Days' ? value : String(value).padStart(2, '0')}</div>
+        <div className="count-label">{label}</div>
+      </div>
+    ))}
+  </div>
 }

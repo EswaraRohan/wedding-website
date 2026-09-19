@@ -5,7 +5,7 @@ const VENUE = {
   address: 'Venkata Ramana Colony, Kurnool, Andhra Pradesh 518003',
   mapEmbed: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.3289763281787!2d78.0246065740884!3d15.839297745554386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5e74ef05bc5c9%3A0x8e9bbe8137eb6115!2sSomisetty%20Tanish%20Convention!5e0!3m2!1sen!2sin!4v1789833583091!5m2!1sen!2sin',
   directionsUrl: 'https://maps.app.goo.gl/HcJ75gKyhixvTxaM8',
-  calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Wedding&dates=20261225T000000Z/20261225T150000Z&location=Somisetty+Tanish+Convention+Kurnool',
+  calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Wedding&dates=20261125T000000Z/20261125T150000Z&location=Somisetty+Tanish+Convention+Kurnool',
 }
 export default function VenueMap() {
   return <section id="venue" className="venue-section">

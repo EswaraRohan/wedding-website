@@ -1,40 +1,9 @@
 import { useEffect, useState } from 'react'
-
-function useCountdown(targetDate) {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-  useEffect(() => {
-    const tick = () => {
-      const diff = new Date(targetDate) - new Date()
-      if (diff <= 0) {
-        setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 })
-        return
-      }
-      setTime({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        minutes: Math.floor((diff % 3600000) / 60000),
-        seconds: Math.floor((diff % 60000) / 1000),
-      })
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [targetDate])
-  return time
-}
-function pad(n) { return String(n).padStart(2, '0') }
+import Countdown from './Countdown'
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false)
   useEffect(() => { const id = setTimeout(() => setLoaded(true), 100); return () => clearTimeout(id) }, [])
-  const { days, hours, minutes, seconds } = useCountdown('2026-11-25T00:00:00')
-  const units = [
-    { label: 'Days', value: days },
-    { label: 'Hrs', value: pad(hours) },
-    { label: 'Min', value: pad(minutes) },
-    { label: 'Sec', value: pad(seconds) },
-  ]
-
   return (
     <section id="home" className="hero">
       <div className="hero-orb hero-orb-one" />
@@ -55,14 +24,7 @@ export default function Hero() {
             <p className="wedding-date">Wednesday · November 25 · 2026</p>
             <div className="date-divider"><div /><span>✦</span><div /></div>
             <p className="venue-line">📍 Somisetty Tanish Convention · Kurnool</p>
-            <div className="countdown-boxes">
-              {units.map(({ label, value }) => (
-                <div className="count-box" key={label}>
-                  <div className="count-value">{value}</div>
-                  <div className="count-label">{label}</div>
-                </div>
-              ))}
-            </div>
+            <Countdown targetDate="2026-11-25T00:00:00" />
             <div className="shimmer" />
           </div>
         </div>
