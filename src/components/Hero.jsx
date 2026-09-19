@@ -1,6 +1,75 @@
 import { useEffect, useRef, useState } from 'react'
 import Countdown from './Countdown'
 
+function CelebrationOverlay() {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const context = canvas.getContext('2d')
+    const petals = []
+    let animationFrame
+    let width = 0
+    let height = 0
+
+    const createPetal = (initial = false) => ({
+      x: Math.random() * width,
+      y: initial ? Math.random() * height : -20,
+      size: 3 + Math.random() * 4,
+      speed: 0.45 + Math.random() * 0.8,
+      drift: (Math.random() - 0.5) * 0.45,
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.035,
+      color: ['#c9a96e', '#d4af37', '#e8a0a8', '#f5c6a5'][Math.floor(Math.random() * 4)],
+    })
+
+    const resize = () => {
+      const ratio = window.devicePixelRatio || 1
+      width = window.innerWidth
+      height = window.innerHeight
+      canvas.width = Math.floor(width * ratio)
+      canvas.height = Math.floor(height * ratio)
+      canvas.style.width = `${width}px`
+      canvas.style.height = `${height}px`
+      context.setTransform(ratio, 0, 0, ratio, 0, 0)
+      petals.length = 0
+      const count = Math.min(42, Math.max(18, Math.floor(width / 28)))
+      for (let index = 0; index < count; index += 1) petals.push(createPetal(true))
+    }
+
+    const animate = () => {
+      context.clearRect(0, 0, width, height)
+      petals.forEach((petal) => {
+        petal.y += petal.speed
+        petal.x += petal.drift + Math.sin(petal.y / 80) * 0.15
+        petal.angle += petal.spin
+        if (petal.y > height + 20) Object.assign(petal, createPetal())
+        context.save()
+        context.translate(petal.x, petal.y)
+        context.rotate(petal.angle)
+        context.fillStyle = petal.color
+        context.globalAlpha = 0.72
+        context.beginPath()
+        context.ellipse(0, 0, petal.size, petal.size * 0.55, 0, 0, Math.PI * 2)
+        context.fill()
+        context.restore()
+      })
+      animationFrame = requestAnimationFrame(animate)
+    }
+
+    resize()
+    window.addEventListener('resize', resize)
+    animationFrame = requestAnimationFrame(animate)
+    return () => {
+      cancelAnimationFrame(animationFrame)
+      window.removeEventListener('resize', resize)
+    }
+  }, [])
+
+  return <div className="celebration-overlay" aria-hidden="true"><canvas ref={canvasRef} /></div>
+}
+
 function ScratchOverlay({ onReveal }) {
   const canvasRef = useRef(null)
   const scratchCountRef = useRef(0)
@@ -94,10 +163,11 @@ export default function Hero({ onReveal }) {
   useEffect(() => { const id = setTimeout(() => setLoaded(true), 100); return () => clearTimeout(id) }, [])
   return (
     <section id="home" className="hero">
+      <CelebrationOverlay />
       <div className="hero-orb hero-orb-one" />
       <div className="hero-orb hero-orb-two" />
       <div className="hero-content" style={{ opacity: loaded ? 1 : 0, transform: loaded ? 'translateY(0)' : 'translateY(24px)' }}>
-        <p className="hero-eyebrow"><span />Wedding Invitation<span /></p>
+        <p className="hero-eyebrow"><span />We joyfully invite you to celebrate the union of<span /></p>
         <div className="hero-name">Katyayani</div>
         <div className="hero-and">&amp;</div>
         <div className="hero-name hero-name-last">Siva Teja</div>
