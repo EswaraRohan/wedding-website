@@ -16,13 +16,25 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
 
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return undefined
+    const handlePlay = () => setIsPlaying(true)
+    const handlePause = () => setIsPlaying(false)
+    audio.addEventListener('play', handlePlay)
+    audio.addEventListener('pause', handlePause)
+    return () => {
+      audio.removeEventListener('play', handlePlay)
+      audio.removeEventListener('pause', handlePause)
+    }
+  }, [])
+
   const toggleAudio = () => {
     if (!audioRef.current) return
     if (audioRef.current.paused) {
-      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
+      audioRef.current.play().catch(() => {})
     } else {
       audioRef.current.pause()
-      setIsPlaying(false)
     }
   }
 
@@ -75,7 +87,7 @@ export default function App() {
       {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
       <Hero onReveal={() => {
         setScratched(true)
-        audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {})
+        audioRef.current?.play().catch(() => {})
       }} />
       {scratched && (
         <>
