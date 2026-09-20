@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './index.css'
+import jayaMangalam from './assets/jaya-mangalam.mp3'
 import WelcomeScreen from './components/WelcomeScreen'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -12,6 +13,18 @@ import VenueMap from './components/VenueMap'
 export default function App() {
   const [opened, setOpened] = useState(false)
   const [scratched, setScratched] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef(null)
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return
+    if (audioRef.current.paused) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
+    } else {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    }
+  }
 
   // Lock body scroll while welcome screen is showing; scroll to top when dismissed
   useEffect(() => {
@@ -54,12 +67,16 @@ export default function App() {
 
   return (
     <div style={{ width: '100%' }}>
+      <audio ref={audioRef} src={jayaMangalam} loop preload="auto" aria-hidden="true" />
       {/* Splash screen - shown until "Open Invitation" is clicked */}
       {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
-      {scratched && <Navbar />}
-      <Hero onReveal={() => setScratched(true)} />
+      {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
+      <Hero onReveal={() => {
+        setScratched(true)
+        audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {})
+      }} />
       {scratched && (
         <>
           <Details />

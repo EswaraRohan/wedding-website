@@ -5,7 +5,7 @@ const links = [
   { label: 'Home', id: 'home' }, { label: 'Events', id: 'details' },
   { label: 'Couple', id: 'meet-the-couple' }, { label: 'Gallery', id: 'gallery' }, { label: 'Venue', id: 'venue' },
 ]
-export default function Navbar() {
+export default function Navbar({ isPlaying, onToggleAudio }) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
@@ -18,6 +18,9 @@ export default function Navbar() {
     <div className="navbar-inner">
       <button className="logo" onClick={() => scrollTo('home')}>Katyayani <span>✦</span> Siva Teja</button>
       <ul className="desktop-nav">{links.map(l => <li key={l.id}><button onClick={() => scrollTo(l.id)}>{l.label}</button></li>)}</ul>
+      <button className="navbar-audio" type="button" onClick={onToggleAudio} aria-label={isPlaying ? 'Turn music off' : 'Turn music on'}>
+        {isPlaying ? '♪ Off' : '♫ On'}
+      </button>
       <button className="mobile-menu-btn" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X size={22} /> : <Menu size={22} />}</button>
     </div>
     {open && <div className="mobile-drawer"><ul>{links.map(l => <li key={l.id}><button onClick={() => scrollTo(l.id)}>{l.label}</button></li>)}</ul></div>}
