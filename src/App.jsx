@@ -101,7 +101,10 @@ export default function App() {
           audio.muted = false
           audio.play().then(() => setIsPlaying(true)).catch(() => {})
         }}
-        onReveal={() => { setScratched(true);window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }) }}
+        onReveal={() => {
+          setScratched(true)
+          setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }), 150)
+        }}
       />
       {scratched && (
         <>
