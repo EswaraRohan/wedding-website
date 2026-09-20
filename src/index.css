@@ -188,6 +188,19 @@ img { max-width: 100%; }
 .countdown-married-emoji { font-size: 28px; line-height: 1; }
 .countdown-married-text { font-family: 'Playfair Display', serif; font-size: clamp(18px, 4vw, 24px); font-style: italic; color: #2A0E12; font-weight: 600; }
 .countdown-married-sub { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #8a7a6a; }
+.wd-screen { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 8px 20px; overflow: hidden; text-align: center; }
+.wd-petals { color: #d4af37; font-size: 18px; letter-spacing: 8px; animation: wdFloat 3s ease-in-out infinite; }
+.wd-kicker { color: #8a6d3b; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; }
+.wd-title { color: #2a0e12; font-family: 'Playfair Display', serif; font-size: clamp(22px, 5vw, 30px); font-style: italic; font-weight: 600; }
+.wd-names { color: #8a6d3b; font-family: 'Playfair Display', serif; font-size: clamp(13px, 3vw, 17px); font-style: italic; }
+.wd-amp { color: #c9a96e; padding: 0 4px; }
+.wd-divider { display: flex; align-items: center; gap: 12px; width: min(210px, 75%); color: #d4af37; }
+.wd-divider::before, .wd-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.8)); }
+.wd-divider::after { background: linear-gradient(to left, transparent, rgba(212, 175, 55, 0.8)); }
+.wd-venue, .wd-time { color: #8a7a6a; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; }
+.wd-pulse-ring { position: absolute; width: 170px; height: 170px; border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 50%; animation: wdPulse 3s ease-out infinite; pointer-events: none; }
+@keyframes wdFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes wdPulse { 0% { transform: scale(0.8); opacity: 0.7; } 100% { transform: scale(1.25); opacity: 0; } }
 .shimmer { position: absolute; top: -50%; left: -100%; width: 60%; height: 200%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent); transform: rotate(25deg); animation: royalShine 5s linear infinite; pointer-events: none; }
 @keyframes royalShine { 0% { left: -100%; } 100% { left: 200%; } }
 .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; opacity: 0.4; animation: floatY 2s ease-in-out infinite; }.scroll-indicator div { width: 1px; height: 40px; background: #c9a96e; }.scroll-indicator span { font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: #c9a96e; }

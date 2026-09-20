@@ -205,7 +205,7 @@ export default function Hero({ onReveal, onAudioStart }) {
             <p className="wedding-date"><span>Wednesday · </span> <span> November 25  ·  </span> <span>2026</span></p>
             <div className="date-divider"><div /><span>✦</span><div /></div>
             <p className="venue-line">📍 Somisetty Tanish Convention · Kurnool</p>
-            <Countdown targetDate="2026-11-26T00:00:00" />
+            <Countdown targetDate="2026-11-25T00:00:00" />
             <div className="shimmer" />
           </div>
           <ScratchOverlay onReveal={() => { setScratched(true); onReveal() }} onAudioStart={onAudioStart} />
