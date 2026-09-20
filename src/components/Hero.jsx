@@ -123,11 +123,6 @@ function ScratchOverlay({ onReveal, onAudioStart }) {
       scratchCountRef.current = 0
     }
 
-    const blockPullToRefresh = (event) => {
-      if (!revealedRef.current) event.preventDefault()
-    }
-
-    canvas.addEventListener('touchmove', blockPullToRefresh, { passive: false })
     const fireAudio = () => {
       if (pendingAudioRef.current) {
         pendingAudioRef.current = false
@@ -141,7 +136,6 @@ function ScratchOverlay({ onReveal, onAudioStart }) {
     const observer = new ResizeObserver(resize)
     observer.observe(canvas)
     return () => {
-      canvas.removeEventListener('touchmove', blockPullToRefresh)
       window.removeEventListener('pointerup', fireAudio)
       window.removeEventListener('touchend', fireAudio)
       window.removeEventListener('touchcancel', fireAudio)
