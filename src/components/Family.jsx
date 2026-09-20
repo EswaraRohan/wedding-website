@@ -1,6 +1,6 @@
 const families = [
   { side: "Katyayani's Family", emoji: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f33f/72.png', parents: ['Chandra Sekhar', 'Subhashini'], siblings: ['Rohan'], blessing: 'Proud parents and beloved brother of the bride.', color: '#c9a96e' },
-  { side: "Siva Teja's Family", emoji: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f338/72.png', parents: ['Ravindra Babu', 'Hemavathi'], siblings: ['Sirisha'], blessing: 'Proud parents and cherished sister of the groom.', color: '#c9a96e' },
+  { side: "Siva Teja's Family", emoji: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f338/72.png', parents: ['Ravindra Babu', 'Hemavathi'], siblings: ['Sirisha'], blessing: 'Blissful parents and cherished sister of the groom.', color: '#c9a96e' },
 ]
 export default function Family() {
   return <section id="family" className="family-section">
