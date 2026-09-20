@@ -160,7 +160,7 @@ img { max-width: 100%; }
 .hero-orb { position: absolute; border-radius: 50%; z-index: 0; }
 .hero-orb-one { top: -140px; right: -140px; width: 500px; height: 500px; background: rgba(201, 169, 110, 0.06); animation: floatY 6s ease-in-out infinite; }
 .hero-orb-two { bottom: -100px; left: -100px; width: 380px; height: 380px; background: rgba(138, 158, 138, 0.06); animation: floatY 8s ease-in-out infinite 2s; }
-.hero-content { position: relative; z-index: 1; width: 100%; font-family: Lato, sans-serif; font-weight: 400; color: #222; transition: opacity 1s ease, transform 1s ease; }
+.hero-content {margin-top:25px; position: relative; z-index: 1; width: 100%; font-family: Lato, sans-serif; font-weight: 400; color: #222; transition: opacity 1s ease, transform 1s ease; }
 .hero-eyebrow { font-size: 15px; font-weight: 700; margin-bottom: 1.75rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
 .hero-eyebrow span { width: 40px; height: 1px; background: #c9a96e; display: inline-block; opacity: 0.5; }
 .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(48px, 10vw, 96px); font-style: italic; font-weight: 400; color: rgba(13, 10, 14, 0.95); line-height: 1; }
