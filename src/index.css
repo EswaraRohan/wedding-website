@@ -136,7 +136,7 @@ img { max-width: 100%; }
 .open-invitation:hover { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); transform: scale(1.03); }
 
 /* Navigation */
-.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 0.35s; }
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 0.35s;height:100px }
 .navbar.scrolled { background: rgba(243, 220, 188, 0.97); backdrop-filter: blur(10px); box-shadow: 0 1px 16px rgba(0, 0, 0, 0.07); }
 .navbar-inner { padding: 0 1.5rem; height: 68px; display: flex; align-items: center; position: relative; margin-top: 20px;}
 .logo { display: flex; align-items: center; background: none; border: 0; cursor: pointer; padding: 0; }
