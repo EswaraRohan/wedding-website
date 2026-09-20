@@ -15,6 +15,7 @@ export default function App() {
   const [scratched, setScratched] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
+  const wasPlayingRef = useRef(false)
 
   const primeAudio = () => {
     const audio = audioRef.current
@@ -34,6 +35,24 @@ export default function App() {
       setIsPlaying(false)
     }
   }
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      const audio = audioRef.current
+      if (!audio) return
+
+      if (document.hidden) {
+        wasPlayingRef.current = !audio.paused && !audio.muted
+        if (wasPlayingRef.current) audio.pause()
+      } else if (wasPlayingRef.current) {
+        audio.muted = false
+        audio.play().then(() => setIsPlaying(true)).catch(() => {})
+      }
+    }
+
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [])
 
   // Lock body scroll while welcome screen is showing; scroll to top when dismissed
   useEffect(() => {

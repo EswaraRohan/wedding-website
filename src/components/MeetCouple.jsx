@@ -5,12 +5,12 @@ const couple = [
   {
     role: 'Bride', name: 'Katyayani', photo: bridePhoto,
     bio: 'Katyayani radiates grace and warmth in everything she does. Her laughter lights up every room and her kindness touches every heart.',
-    city: 'Hyderabad, Telangana', side: 'left',
+    side: 'left',
   },
   {
     role: 'Groom', name: 'Siva Teja', photo: groomPhoto,
     bio: 'Siva Teja brings a natural charm to every gathering and always knows how to make an occasion memorable. He is a man of integrity and compassion, and his presence is a gift to all who know him.',
-    city: 'Hyderabad, Telangana', side: 'right',
+    side: 'right',
   },
 ]
 function CoupleCard({ person }) {
@@ -18,7 +18,7 @@ function CoupleCard({ person }) {
     <div className="couple-photo"><div className="couple-frame" /><img src={person.photo} alt={person.name} /></div>
     <span className="role-tag">{person.role}</span>
     <h3>{person.name}</h3>
-    <p className="couple-city">{person.city}</p>
+    {person.city && <p className="couple-city">{person.city}</p>}
     <p className="couple-bio">"{person.bio}"</p>
   </div>
 }
