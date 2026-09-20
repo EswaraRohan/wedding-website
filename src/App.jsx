@@ -38,6 +38,15 @@ export default function App() {
     }
   }
 
+  const unlockAudio = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.play().then(() => {
+      audio.pause()
+      audio.currentTime = 0
+    }).catch(() => {})
+  }
+
   // Lock body scroll while welcome screen is showing; scroll to top when dismissed
   useEffect(() => {
     if (!opened) {
@@ -81,7 +90,7 @@ export default function App() {
     <div style={{ width: '100%' }}>
       <audio ref={audioRef} src={jayaMangalam} loop preload="auto" aria-hidden="true" />
       {/* Splash screen - shown until "Open Invitation" is clicked */}
-      {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
+      {!opened && <WelcomeScreen onOpen={() => { unlockAudio(); setOpened(true) }} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
       {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
