@@ -202,7 +202,7 @@ export default function Hero({ onReveal, onAudioStart }) {
             {['tl','tr','bl','br'].map(c => <span key={c} className={`corner ${c}`}>❈</span>)}
             <div className="top-ornament">❈ ❈ ❈</div>
             <div className="watermark">✺</div>
-            <p className="wedding-date"><span>Wednesday</span> <span>· November 25</span> <span>· 2026</span></p>
+            <p className="wedding-date"><span>Wednesday · </span> <span> November 25  ·  </span> <span>2026</span></p>
             <div className="date-divider"><div /><span>✦</span><div /></div>
             <p className="venue-line">📍 Somisetty Tanish Convention · Kurnool</p>
             <Countdown targetDate="2026-11-25T00:00:00" />
