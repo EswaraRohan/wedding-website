@@ -189,7 +189,7 @@ export default function Hero({ onReveal, onAudioStart }) {
       <CelebrationOverlay />
       <div className="hero-orb hero-orb-one" />
       <div className="hero-orb hero-orb-two" />
-      <div className="hero-content" style={{ opacity: loaded ? 1 : 0, transform: loaded ? 'translateY(0)' : 'translateY(24px)' }}>
+      <div className={`hero-content ${scratched ? 'hero-content-revealed' : ''}`} style={{ opacity: loaded ? 1 : 0, transform: loaded ? 'translateY(0)' : 'translateY(24px)' }}>
         <p className="hero-eyebrow"><span />We joyfully invite you to celebrate the union of<span /></p>
         <div className="hero-name">Katyayani</div>
         <div className="hero-and">&amp;</div>
