@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
 
 export default function Countdown({ targetDate }) {
-  const [time, setTime] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+  const [time, setTime] = useState(null)
+  const [married, setMarried] = useState(false)
+
   useEffect(() => {
     const tick = () => {
       const diff = new Date(targetDate) - new Date()
-      if (diff <= 0) return setTime({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      if (diff <= 0) {
+        setMarried(true)
+        return
+      }
+      setMarried(false)
       setTime({
         days: Math.floor(diff / 86400000),
         hours: Math.floor((diff % 86400000) / 3600000),
@@ -17,6 +23,18 @@ export default function Countdown({ targetDate }) {
     const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [targetDate])
+
+  if (married) {
+    return (
+      <div className="countdown-married">
+        <span className="countdown-married-emoji" aria-hidden="true">💍</span>
+        <span className="countdown-married-text">We&rsquo;re Married!</span>
+        <span className="countdown-married-sub">Thank you for celebrating with us</span>
+      </div>
+    )
+  }
+
+  if (!time) return null
 
   const units = [
     { label: 'Days', value: time.days },

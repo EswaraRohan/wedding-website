@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import templeImage from '../assets/Temple.avif'
 
-const TEMPLE_IMG = 'https://parthisowmi.invitesu.in/_next/image?url=%2Fpapanasam3.webp&w=1920&q=75'
+const TEMPLE_IMG = templeImage
 
 export default function WelcomeScreen({ onOpen }) {
   const [leaving, setLeaving] = useState(false)

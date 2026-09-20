@@ -6,7 +6,7 @@ const events = [
     date: 'Monday, November 23, 2026', time: '8:00 AM onwards', venue: 'Eswara Nilayam',
     address: 'Eswara Nilayam, Kurnool', mapsUrl: 'https://maps.app.goo.gl/Dx9JMDEY6mELfkew8',
     dresscode: 'Yellow / Ethnic Wear', badge: 'Festive Attire', highlight: false, accent: '#8a9e8a',
-    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Pellikuthuru+Event&dates=20261123T000000Z/20261123T120000Z&location=Eswara+Nilayam+Kurnool',
+    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+Pellikuthuru+Event&dates=20261123T023000Z/20261123T120000Z&location=Eswara+Nilayam+Kurnool',
   },
   {
     eventId: 'sangeeth', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f3b6/72.png', name: 'Edurukolu & Sangeeth', nameSub: "Groom's Welcome & Sangeeth Night",
@@ -14,7 +14,7 @@ const events = [
     address: 'Venkata Ramana Colony, Kurnool, Andhra Pradesh 518003',
     mapsUrl: 'https://maps.app.goo.gl/HcJ75gKyhixvTxaM8', dresscode: 'Festive / Colourful', badge: 'Bright Colours',
     highlight: false, accent: '#9e7a5a',
-    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Sangeeth&dates=20261124T000000Z/20261124T150000Z&location=Somisetty+Tanish+Convention+Kurnool',
+    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Sangeeth&dates=20261124T140000Z/20261124T180000Z&location=Somisetty+Tanish+Convention+Kurnool',
   },
   {
     eventId: 'muhurtham', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1fa94/72.png', name: 'Marriage', nameSub: 'Muhurtham',
@@ -22,7 +22,7 @@ const events = [
     address: 'Venkata Ramana Colony, Kurnool, Andhra Pradesh 518003',
     mapsUrl: 'https://maps.app.goo.gl/HcJ75gKyhixvTxaM8', dresscode: 'Traditional & Elegant', badge: 'Traditional Attire',
     highlight: true, accent: '#c9a96e',
-    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Wedding&dates=20261125T000000Z/20261125T150000Z&location=Somisetty+Tanish+Convention+Kurnool',
+    calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Wedding&dates=20261125T042400Z/20261125T150000Z&location=Somisetty+Tanish+Convention+Kurnool',
   },
 ]
 
