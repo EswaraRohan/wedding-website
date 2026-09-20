@@ -8,6 +8,12 @@
   scroll-behavior: smooth;
 }
 
+html, body{
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  max-width: 100%;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   background-color: #F3DCBC;
