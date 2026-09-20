@@ -18,7 +18,7 @@ const events = [
   },
   {
     eventId: 'muhurtham', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1fa94/72.png', name: 'Marriage', nameSub: 'Muhurtham',
-    date: 'Wednesday, November 25, 2026', time: '9:57 AM', venue: 'Somisetty Tanish Convention',
+    date: 'Wednesday, November 25, 2026', time: '9:54 AM', venue: 'Somisetty Tanish Convention',
     address: 'Venkata Ramana Colony, Kurnool, Andhra Pradesh 518003',
     mapsUrl: 'https://maps.app.goo.gl/HcJ75gKyhixvTxaM8', dresscode: 'Traditional & Elegant', badge: 'Traditional Attire',
     highlight: true, accent: '#c9a96e',
