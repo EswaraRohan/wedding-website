@@ -223,3 +223,9 @@ img { max-width: 100%; }
 
 .venue-calendar-icon { width: 1rem; height: 1rem; object-fit: contain; flex: 0 0 auto; }
 .venue-flower-icon { width: 1.4rem; height: 1.4rem; object-fit: contain; }
+
+/* Gallery captions remain readable without requiring hover. */
+.gallery-caption {
+  background: linear-gradient(to top, rgba(42, 14, 18, 0.75), transparent);
+  opacity: 1;
+}
