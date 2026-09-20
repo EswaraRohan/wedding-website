@@ -15,7 +15,7 @@ export default function Navbar({ isPlaying, onToggleAudio }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
   const scrollTo = id => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setOpen(false) }
-  return <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+  return <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${open ? 'menu-open' : ''}`}>
     <div className="navbar-inner">
       <button className="logo" onClick={() => scrollTo('home')} aria-label="Go to home">
         <img src={logoImage} alt="Katyayani and Siva Teja" />
