@@ -9,7 +9,7 @@ const events = [
     calendarUrl: 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Katyayani+%26+Siva+Teja+Pellikuthuru+Event&dates=20261123T000000Z/20261123T120000Z&location=Eswara+Nilayam+Kurnool',
   },
   {
-    eventId: 'sangeeth', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f3b6/72.png', name: 'Edurukolu & Sangeet', nameSub: "Groom's Welcome & Sangeet Night",
+    eventId: 'sangeeth', icon: 'https://fonts.gstatic.com/s/e/notoemoji/17.0/1f3b6/72.png', name: 'Edurukolu & Sangeeth', nameSub: "Groom's Welcome & Sangeeth Night",
     date: 'Tuesday, November 24, 2026', time: '7:30 PM onwards', venue: 'Somisetty Tanish Convention',
     address: 'Venkata Ramana Colony, Kurnool, Andhra Pradesh 518003',
     mapsUrl: 'https://maps.app.goo.gl/HcJ75gKyhixvTxaM8', dresscode: 'Festive / Colourful', badge: 'Bright Colours',

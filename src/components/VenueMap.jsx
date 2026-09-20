@@ -19,7 +19,7 @@ export default function VenueMap() {
           <h3>{VENUE.name}</h3><span className="venue-type">Ceremony Venue</span>
           <div className="address"><MapPin size={16} color="#c9a96e" /><p>{VENUE.address}</p></div>
           <div className="schedule-card">
-            {[['7:00 AM','Gouri Pooja'],['8:30 AM','Kasi Yatra'],['9:54 AM','Muhurtham'],['11:30 AM','Nagaveli']].map(([time,label]) => <div key={time}><span>{time}</span><span>{label}</span></div>)}
+            {[['7:00 AM','Gauri Pooja'],['8:30 AM','Kashi Yatra'],['9:54 AM','Muhurtham'],['11:30 AM','Nagavalli']].map(([time,label]) => <div key={time}><span>{time}</span><span>{label}</span></div>)}
           </div>
           <div className="venue-actions">
             <a href={VENUE.directionsUrl} target="_blank" rel="noreferrer" className="btn-outline-gold"><Navigation size={13} />Get Directions</a>

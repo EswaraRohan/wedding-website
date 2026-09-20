@@ -60,7 +60,7 @@ src/
 
 - `WelcomeScreen.jsx`: Opening invitation and entrance transition.
 - `Hero.jsx`: Couple names, wedding date, and live countdown.
-- `Details.jsx`: Pre-wedding, sangeet, and marriage events.
+- `Details.jsx`: Pre-wedding, sangeeth, and marriage events.
 - `MeetCouple.jsx`: Couple profiles and introduction.
 - `Gallery.jsx`: Wedding image gallery with lightbox view.
 - `Family.jsx`: Family names and blessings.

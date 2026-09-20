@@ -1,5 +1,5 @@
 import bridePhoto from '../assets/bride.jpg'
-import groomPhoto from '../assets/WhatsApp Image 2026-09-20 at 10.56.05.jpeg'
+import groomPhoto from '../assets/groom.jpeg'
 
 const couple = [
   {
