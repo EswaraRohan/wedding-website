@@ -16,12 +16,21 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
 
+  const primeAudio = () => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.muted = true
+    audio.play().catch(() => {})
+  }
+
   const toggleAudio = () => {
-    if (!audioRef.current) return
-    if (audioRef.current.paused) {
-      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
+    const audio = audioRef.current
+    if (!audio) return
+    if (audio.paused || audio.muted) {
+      audio.muted = false
+      audio.play().then(() => setIsPlaying(true)).catch(() => {})
     } else {
-      audioRef.current.pause()
+      audio.pause()
       setIsPlaying(false)
     }
   }
@@ -69,13 +78,20 @@ export default function App() {
     <div style={{ width: '100%' }}>
       <audio ref={audioRef} src={jayaMangalam} loop preload="auto" aria-hidden="true" />
       {/* Splash screen - shown until "Open Invitation" is clicked */}
-      {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
+      {!opened && <WelcomeScreen onOpen={() => setOpened(true)} onPrimeAudio={primeAudio} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
       {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
       <Hero onReveal={() => {
         setScratched(true)
-        audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {})
+        const audio = audioRef.current
+        if (!audio) return
+        audio.muted = false
+        if (audio.paused) {
+          audio.play().then(() => setIsPlaying(true)).catch(() => {})
+        } else {
+          setIsPlaying(true)
+        }
       }} />
       {scratched && (
         <>

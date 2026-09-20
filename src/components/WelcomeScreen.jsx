@@ -2,11 +2,12 @@ import { useState } from 'react'
 
 const TEMPLE_IMG = 'https://parthisowmi.invitesu.in/_next/image?url=%2Fpapanasam3.webp&w=1920&q=75'
 
-export default function WelcomeScreen({ onOpen }) {
+export default function WelcomeScreen({ onOpen, onPrimeAudio }) {
   const [leaving, setLeaving] = useState(false)
   const [imgLoaded, setImgLoaded] = useState(false)
 
   const handleOpen = () => {
+    onPrimeAudio?.()
     setLeaving(true)
     setTimeout(onOpen, 1100)
   }
