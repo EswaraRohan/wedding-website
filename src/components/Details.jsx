@@ -123,7 +123,7 @@ export default function Details() {
                 <InfoRow icon={MapPin} label="Venue" value={ev.venue} />
                 <InfoRow icon={Shirt} label="Dress Code" value={ev.dresscode} />
                 <div className="event-buttons">
-                  <a href={ev.mapsUrl} target="_blank" rel="noreferrer" className="event-outline" style={{ borderColor: ev.accent, color: ev.accent }}>Directions</a>
+                  <a href={ev.mapsUrl} target="_blank" rel="noreferrer" className="event-outline" style={{ borderColor: ev.accent, color: '#000' }}>Directions</a>
                   <a href={ev.calendarUrl} target="_blank" rel="noreferrer" className="event-solid" style={{ background: ev.accent, borderColor: ev.accent }}><img className="calendar-icon" src="https://fonts.gstatic.com/s/e/notoemoji/17.0/1f4c5/72.png" alt="" /> Add to Cal</a>
                 </div>
               </div>
