@@ -1,4 +1,5 @@
 import bridePhoto from '../assets/bride.jpg'
+import groomPhoto from '../assets/WhatsApp Image 2026-09-20 at 10.56.05.jpeg'
 
 const couple = [
   {
@@ -7,7 +8,7 @@ const couple = [
     city: 'Hyderabad, Telangana', side: 'left',
   },
   {
-    role: 'Groom', name: 'Siva Teja', photo: 'https://picsum.photos/seed/groomST1/500/600',
+    role: 'Groom', name: 'Siva Teja', photo: groomPhoto,
     bio: 'Siva Teja brings an effortless energy to every gathering and always knows how to make an ocassion memorable. He is a man of integrity and compassion, and his presence is a gift to all who know him.',
     city: 'Hyderabad, Telangana', side: 'right',
   },

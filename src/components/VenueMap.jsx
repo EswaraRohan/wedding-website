@@ -16,10 +16,10 @@ export default function VenueMap() {
       <div className="venue-grid">
         <div data-animate="left" className="map-frame"><iframe title={VENUE.name} src={VENUE.mapEmbed} width="100%" height="100%" style={{ border: 0, display: 'block' }} allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin" /></div>
         <div data-animate="right" className="venue-info">
-          <h3>{VENUE.name}</h3><span className="venue-type">Ceremony &amp; Reception Venue</span>
+          <h3>{VENUE.name}</h3><span className="venue-type">Ceremony Venue</span>
           <div className="address"><MapPin size={16} color="#c9a96e" /><p>{VENUE.address}</p></div>
           <div className="schedule-card">
-            {[['6:00 PM','Ceremony begins'],['7:30 PM','Dinner service'],['8:30 PM','Reception & celebrations'],['12:00 AM','Celebrations conclude']].map(([time,label]) => <div key={time}><span>{time}</span><span>{label}</span></div>)}
+            {[['7:00 AM','Gouri Pooja'],['8:30 AM','Kasi Yatra'],['9:54 AM','Muhurtham'],['11:30 AM','Nagaveli']].map(([time,label]) => <div key={time}><span>{time}</span><span>{label}</span></div>)}
           </div>
           <div className="venue-actions">
             <a href={VENUE.directionsUrl} target="_blank" rel="noreferrer" className="btn-outline-gold"><Navigation size={13} />Get Directions</a>

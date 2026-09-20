@@ -22,7 +22,7 @@ export default function WelcomeScreen({ onOpen }) {
         style={{ opacity: imgLoaded ? 0.55 : 0 }}
       />
       <div className="welcome-content">
-        <p className="eyebrow">With the blessings of our elders &nbsp;|&nbsp; Auspicious Blessings</p>
+        <p className="eyebrow">With the blessings of our elders &nbsp;</p>
         <div className="gold-line" />
         <div className="welcome-name">Katyayani</div>
         <div className="welcome-amp">&amp;</div>
