@@ -9,7 +9,7 @@ const couple = [
   },
   {
     role: 'Groom', name: 'Siva Teja', photo: groomPhoto,
-    bio: 'Siva Teja brings an effortless energy to every gathering and always knows how to make an ocassion memorable. He is a man of integrity and compassion, and his presence is a gift to all who know him.',
+    bio: 'Siva Teja brings a natural charm to every gathering and always knows how to make an occasion memorable. He is a man of integrity and compassion, and his presence is a gift to all who know him.',
     city: 'Hyderabad, Telangana', side: 'right',
   },
 ]
