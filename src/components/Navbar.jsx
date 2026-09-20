@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import logoImage from '../assets/Logo.png'
 
 const links = [
   { label: 'Home', id: 'home' }, { label: 'Events', id: 'details' },
@@ -16,7 +17,9 @@ export default function Navbar({ isPlaying, onToggleAudio }) {
   const scrollTo = id => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setOpen(false) }
   return <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
     <div className="navbar-inner">
-      <button className="logo" onClick={() => scrollTo('home')}>Katyayani <span>✦</span> Siva Teja</button>
+      <button className="logo" onClick={() => scrollTo('home')} aria-label="Go to home">
+        <img src={logoImage} alt="Katyayani and Siva Teja" />
+      </button>
       <ul className="desktop-nav">{links.map(l => <li key={l.id}><button onClick={() => scrollTo(l.id)}>{l.label}</button></li>)}</ul>
       <button className="navbar-audio" type="button" onClick={onToggleAudio} aria-label={isPlaying ? 'Turn music off' : 'Turn music on'}>
         {isPlaying ? '♪ Off' : '♫ On'}
