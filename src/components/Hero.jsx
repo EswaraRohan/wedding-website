@@ -159,6 +159,7 @@ function ScratchOverlay({ onReveal }) {
     onPointerDown={(event) => { drawingRef.current = true; event.currentTarget.setPointerCapture?.(event.pointerId); scratch(event) }}
     onPointerMove={(event) => { if (drawingRef.current) scratch(event) }}
     onPointerUp={finishScratch}
+    onTouchEnd={finishScratch}
     onPointerCancel={finishScratch}
     onPointerLeave={() => { drawingRef.current = false }}
     aria-label="Scratch to reveal the wedding date"
