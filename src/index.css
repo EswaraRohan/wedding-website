@@ -14,6 +14,10 @@ html, body{
   max-width: 100%;
 }
 
+html{
+  overscroll-behavior-y: none;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   background-color: #F3DCBC;
