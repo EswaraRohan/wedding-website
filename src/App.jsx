@@ -17,6 +17,25 @@ export default function App() {
   const audioRef = useRef(null)
   const wasPlayingRef = useRef(false)
 
+  // iOS Safari requires the audio element to be activated by an earlier touch
+  // before a later scratch-release play() call can start audible playback.
+  useEffect(() => {
+    const audio = audioRef.current
+    if (!audio) return undefined
+
+    const unlockAudio = () => {
+      audio.muted = true
+      audio.play().then(() => {
+        audio.pause()
+        audio.currentTime = 0
+        audio.muted = false
+      }).catch(() => {})
+    }
+
+    window.addEventListener('touchstart', unlockAudio, { once: true })
+    return () => window.removeEventListener('touchstart', unlockAudio)
+  }, [])
+
   const toggleAudio = () => {
     const audio = audioRef.current
     if (!audio) return
