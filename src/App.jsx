@@ -17,13 +17,6 @@ export default function App() {
   const audioRef = useRef(null)
   const wasPlayingRef = useRef(false)
 
-  const primeAudio = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    audio.muted = true
-    audio.play().catch(() => {})
-  }
-
   const toggleAudio = () => {
     const audio = audioRef.current
     if (!audio) return
@@ -99,21 +92,19 @@ export default function App() {
     <div style={{ width: '100%' }}>
       <audio ref={audioRef} src={jayaMangalam} loop preload="auto" aria-hidden="true" />
       {/* Splash screen - shown until "Open Invitation" is clicked */}
-      {!opened && <WelcomeScreen onOpen={() => setOpened(true)} onPrimeAudio={primeAudio} />}
+      {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
       {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
-      <Hero onReveal={() => {
-        setScratched(true)
-        const audio = audioRef.current
-        if (!audio) return
-        audio.muted = false
-        if (audio.paused) {
+      <Hero
+        onAudioStart={() => {
+          const audio = audioRef.current
+          if (!audio || !audio.paused) return
+          audio.muted = false
           audio.play().then(() => setIsPlaying(true)).catch(() => {})
-        } else {
-          setIsPlaying(true)
-        }
-      }} />
+        }}
+        onReveal={() => { setScratched(true) }}
+      />
       {scratched && (
         <>
           <Details />

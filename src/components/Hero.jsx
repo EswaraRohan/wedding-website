@@ -70,12 +70,16 @@ function CelebrationOverlay() {
   return <div className="celebration-overlay" aria-hidden="true"><canvas ref={canvasRef} /></div>
 }
 
-function ScratchOverlay({ onReveal }) {
+function ScratchOverlay({ onReveal, onAudioStart }) {
   const canvasRef = useRef(null)
   const scratchCountRef = useRef(0)
   const drawingRef = useRef(false)
   const revealedRef = useRef(false)
+  const pendingAudioRef = useRef(false)
+  const onAudioStartRef = useRef(onAudioStart)
   const [complete, setComplete] = useState(false)
+
+  useEffect(() => { onAudioStartRef.current = onAudioStart }, [onAudioStart])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -124,11 +128,21 @@ function ScratchOverlay({ onReveal }) {
     }
 
     canvas.addEventListener('touchmove', blockPullToRefresh, { passive: false })
+    const fireAudio = () => {
+      if (pendingAudioRef.current) {
+        pendingAudioRef.current = false
+        onAudioStartRef.current?.()
+      }
+    }
+    canvas.addEventListener('pointerup', fireAudio)
+    canvas.addEventListener('touchend', fireAudio)
     resize()
     const observer = new ResizeObserver(resize)
     observer.observe(canvas)
     return () => {
       canvas.removeEventListener('touchmove', blockPullToRefresh)
+      canvas.removeEventListener('pointerup', fireAudio)
+      canvas.removeEventListener('touchend', fireAudio)
       observer.disconnect()
     }
   }, [])
@@ -148,6 +162,7 @@ function ScratchOverlay({ onReveal }) {
     scratchCountRef.current += 1
     if (scratchCountRef.current > 22) {
       revealedRef.current = true
+      pendingAudioRef.current = true
       setComplete(true)
       onReveal()
     }
@@ -165,7 +180,7 @@ function ScratchOverlay({ onReveal }) {
   />
 }
 
-export default function Hero({ onReveal }) {
+export default function Hero({ onReveal, onAudioStart }) {
   const [loaded, setLoaded] = useState(false)
   const [scratched, setScratched] = useState(false)
   useEffect(() => { const id = setTimeout(() => setLoaded(true), 100); return () => clearTimeout(id) }, [])
@@ -193,7 +208,7 @@ export default function Hero({ onReveal }) {
             <Countdown targetDate="2026-11-25T00:00:00" />
             <div className="shimmer" />
           </div>
-          <ScratchOverlay onReveal={() => { setScratched(true); onReveal() }} />
+          <ScratchOverlay onReveal={() => { setScratched(true); onReveal() }} onAudioStart={onAudioStart} />
         </div>
       </div>
       {!scratched && <div className="scratch-below-note">✦ Scratch the card to continue ✦</div>}
