@@ -74,6 +74,7 @@ function ScratchOverlay({ onReveal }) {
   const canvasRef = useRef(null)
   const scratchCountRef = useRef(0)
   const drawingRef = useRef(false)
+  const readyToRevealRef = useRef(false)
   const revealedRef = useRef(false)
   const [complete, setComplete] = useState(false)
 
@@ -117,6 +118,7 @@ function ScratchOverlay({ onReveal }) {
       context.font = '400 14px Cinzel, serif'
       context.fillText('The Wedding Date', bounds.width / 2, bounds.height / 2 + 34)
       scratchCountRef.current = 0
+      readyToRevealRef.current = false
     }
 
     resize()
@@ -139,19 +141,25 @@ function ScratchOverlay({ onReveal }) {
     context.fill()
     scratchCountRef.current += 1
     if (scratchCountRef.current > 22) {
-      revealedRef.current = true
-      setComplete(true)
-      onReveal()
+      readyToRevealRef.current = true
     }
+  }
+
+  const finishScratch = () => {
+    drawingRef.current = false
+    if (!readyToRevealRef.current || revealedRef.current) return
+    revealedRef.current = true
+    setComplete(true)
+    onReveal()
   }
 
   return <canvas
     ref={canvasRef}
     className={`scratch-overlay ${complete ? 'is-complete' : ''}`}
-    onPointerDown={(event) => { drawingRef.current = true; scratch(event) }}
+    onPointerDown={(event) => { drawingRef.current = true; event.currentTarget.setPointerCapture?.(event.pointerId); scratch(event) }}
     onPointerMove={(event) => { if (drawingRef.current) scratch(event) }}
-    onPointerUp={() => { drawingRef.current = false }}
-    onPointerCancel={() => { drawingRef.current = false }}
+    onPointerUp={finishScratch}
+    onPointerCancel={finishScratch}
     onPointerLeave={() => { drawingRef.current = false }}
     aria-label="Scratch to reveal the wedding date"
   />
