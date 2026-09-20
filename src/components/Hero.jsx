@@ -119,10 +119,18 @@ function ScratchOverlay({ onReveal }) {
       scratchCountRef.current = 0
     }
 
+    const blockPullToRefresh = (event) => {
+      if (!revealedRef.current) event.preventDefault()
+    }
+
+    canvas.addEventListener('touchmove', blockPullToRefresh, { passive: false })
     resize()
     const observer = new ResizeObserver(resize)
     observer.observe(canvas)
-    return () => observer.disconnect()
+    return () => {
+      canvas.removeEventListener('touchmove', blockPullToRefresh)
+      observer.disconnect()
+    }
   }, [])
 
   const scratch = (event) => {
