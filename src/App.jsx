@@ -16,18 +16,10 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
 
-  const playMusic = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    audio.play()
-      .then(() => setIsPlaying(true))
-      .catch(() => setIsPlaying(false))
-  }
-
   const toggleAudio = () => {
     if (!audioRef.current) return
     if (audioRef.current.paused) {
-      playMusic()
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
     } else {
       audioRef.current.pause()
       setIsPlaying(false)
@@ -75,15 +67,15 @@ export default function App() {
 
   return (
     <div style={{ width: '100%' }}>
-      <audio ref={audioRef} src={jayaMangalam} loop preload="auto" playsInline aria-hidden="true" />
+      <audio ref={audioRef} src={jayaMangalam} loop preload="auto" aria-hidden="true" />
       {/* Splash screen - shown until "Open Invitation" is clicked */}
       {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
       {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
       <Hero onReveal={() => {
-        playMusic()
         setScratched(true)
+        audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {})
       }} />
       {scratched && (
         <>
