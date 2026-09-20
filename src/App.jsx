@@ -16,35 +16,14 @@ export default function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const audioRef = useRef(null)
 
-  useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return undefined
-    const handlePlay = () => setIsPlaying(true)
-    const handlePause = () => setIsPlaying(false)
-    audio.addEventListener('play', handlePlay)
-    audio.addEventListener('pause', handlePause)
-    return () => {
-      audio.removeEventListener('play', handlePlay)
-      audio.removeEventListener('pause', handlePause)
-    }
-  }, [])
-
   const toggleAudio = () => {
     if (!audioRef.current) return
     if (audioRef.current.paused) {
-      audioRef.current.play().catch(() => {})
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {})
     } else {
       audioRef.current.pause()
+      setIsPlaying(false)
     }
-  }
-
-  const unlockAudio = () => {
-    const audio = audioRef.current
-    if (!audio) return
-    audio.play().then(() => {
-      audio.pause()
-      audio.currentTime = 0
-    }).catch(() => {})
   }
 
   // Lock body scroll while welcome screen is showing; scroll to top when dismissed
@@ -90,13 +69,13 @@ export default function App() {
     <div style={{ width: '100%' }}>
       <audio ref={audioRef} src={jayaMangalam} loop preload="auto" aria-hidden="true" />
       {/* Splash screen - shown until "Open Invitation" is clicked */}
-      {!opened && <WelcomeScreen onOpen={() => { unlockAudio(); setOpened(true) }} />}
+      {!opened && <WelcomeScreen onOpen={() => setOpened(true)} />}
 
       {/* Main site - rendered behind splash so it is ready instantly */}
       {scratched && <Navbar isPlaying={isPlaying} onToggleAudio={toggleAudio} />}
       <Hero onReveal={() => {
         setScratched(true)
-        audioRef.current?.play().catch(() => {})
+        audioRef.current?.play().then(() => setIsPlaying(true)).catch(() => {})
       }} />
       {scratched && (
         <>
